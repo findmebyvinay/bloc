@@ -1,7 +1,9 @@
 import 'package:bloc_prac/bloc/Counter_cubit.dart';
+import 'package:bloc_prac/bloc/bloc_counter/counter_bloc.dart';
 import 'package:bloc_prac/bloc/switch/switch_bloc.dart';
 import 'package:bloc_prac/ui/counter_view.dart';
 import 'package:bloc_prac/ui/notify.dart';
+import 'package:bloc_prac/ui/todo_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +22,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
            create: (context) => CounterCubit(0),
         ),
-     BlocProvider( create:(context) => SwitchBloc(),)
+     BlocProvider( create:(context) => SwitchBloc(),),
+     BlocProvider(create: (context) =>CounterBloc()),
      
       ],
       child: MaterialApp(
@@ -44,7 +47,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:Notify()
+        home:TodoScreen()
       ),
     );
   }

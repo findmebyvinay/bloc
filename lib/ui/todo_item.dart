@@ -20,7 +20,7 @@ class TodoItem extends StatelessWidget {
       leading: Checkbox(
         value: todo.isCompleted,
         onChanged: (_) {
-          context.read<CounterBloc>().add(AddTodo(todo.id as String));
+          context.read<CounterBloc>().add(AddTodo(title: ''));
         },
       ),
       trailing: IconButton(

@@ -8,8 +8,11 @@ List<Object> get props=> [];
 }
 
 class AddTodo extends CounterEvent{
-  final String?title;
-  AddTodo(String text, {this.title});
+  final String title;
+  AddTodo( {required this.title});
+
+  @override
+  List<Object> get props=> [title];
 }
 
 class DeleteTodo extends CounterEvent{

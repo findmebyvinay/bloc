@@ -32,7 +32,7 @@ class TodoScreen extends StatelessWidget {
                   icon: Icon(Icons.add),
                   onPressed: () {
                     if (_controller.text.isNotEmpty) {
-                      context.read<CounterBloc>().add(AddTodo(_controller.text));
+                      context.read<CounterBloc>().add(AddTodo(title:_controller.text));
                       _controller.clear();
                     }
                   },
@@ -42,8 +42,8 @@ class TodoScreen extends StatelessWidget {
           ),
           Expanded(
             child: BlocBuilder<CounterBloc, Counterstate>(
-              builder: (context, state) {
-                if (state is TodoLoaded) {
+              builder: (context, state){
+                if (state.todos.isNotEmpty) {
                   return ListView.builder(
                     itemCount: state.todos.length,
                     itemBuilder: (context, index) {
@@ -51,6 +51,7 @@ class TodoScreen extends StatelessWidget {
                     },
                   );
                 }
+               
                 return Center(child: Text('No tasks yet.'));
               },
             ),

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../model/todo.dart';
 
 class CounterBloc extends Bloc<CounterEvent,Counterstate> {
-  CounterBloc():super(TodoInitial()){
+  CounterBloc():super(Counterstate()){
     on<AddTodo>(_onAddTodo);
     on<DeleteTodo>(_onDeleteTodo);
   }
@@ -18,14 +18,16 @@ class CounterBloc extends Bloc<CounterEvent,Counterstate> {
       title: event.title,
     );
     _todos.add(newTodo);
-    emit(TodoLoaded(List.from(_todos))); // Emit a copy for immutability
+    emit(state.copyWith(todos:List.from(_todos)));
+    //emit(TodoLoaded(List.from(_todos))); // Emit a copy for immutability
   }
 
   
 
   void _onDeleteTodo(DeleteTodo event, Emitter<Counterstate> emit) {
     _todos.removeWhere((todo) => todo.id == event.id);
-    emit(TodoLoaded(List.from(_todos)));
+   // emit(TodoLoaded(List.from(_todos)));
+   emit(state.copyWith(todos: List.from(_todos)));
   }
 
 }

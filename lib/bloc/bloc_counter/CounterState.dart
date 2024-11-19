@@ -2,17 +2,15 @@ import 'package:bloc_prac/model/todo.dart';
 import 'package:equatable/equatable.dart';
 
 class Counterstate extends Equatable{
+final List<Todo> todos;
+Counterstate({this.todos=const []});
 
-Counterstate();
 
-
+Counterstate copyWith({List<Todo>? todos}){{{
+  return Counterstate(
+    todos: todos ?? this.todos
+  ); 
+}}}
   @override
-  List<Object> get props=>[];
-}
-class TodoInitial extends Counterstate {}
-
-class TodoLoaded extends Counterstate {
-  final List<Todo> todos;
-
-  TodoLoaded(this.todos);
+  List<Object> get props=>[todos];
 }

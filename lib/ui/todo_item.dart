@@ -14,15 +14,15 @@ class TodoItem extends StatelessWidget {
       title: Text(
         todo.title!,
         style: TextStyle(
-          decoration: todo.isCompleted ? TextDecoration.lineThrough : null,
+          decoration: todo.isCompleted ? TextDecoration.lineThrough :null,
         ),
       ),
-      leading: Checkbox(
-        value: todo.isCompleted,
-        onChanged: (_) {
-          context.read<CounterBloc>().add(AddTodo(title: ''));
-        },
-      ),
+      // leading: Checkbox(
+      //   value: todo.isCompleted,
+      //   onChanged: (_) {
+      //     context.read<CounterBloc>().add(todo);
+      //   },
+      // ),
       trailing: IconButton(
         icon: Icon(Icons.delete),
         onPressed: () {

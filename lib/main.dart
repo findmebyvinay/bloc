@@ -1,7 +1,11 @@
 import 'package:bloc_prac/bloc/Counter_cubit.dart';
 import 'package:bloc_prac/bloc/bloc_counter/counter_bloc.dart';
+import 'package:bloc_prac/bloc/fav/fav_bloc.dart';
+import 'package:bloc_prac/bloc/fav/fav_event.dart';
 import 'package:bloc_prac/bloc/switch/switch_bloc.dart';
+import 'package:bloc_prac/repository/fav_repository.dart';
 import 'package:bloc_prac/ui/counter_view.dart';
+import 'package:bloc_prac/ui/fav_screen.dart';
 import 'package:bloc_prac/ui/notify.dart';
 import 'package:bloc_prac/ui/todo_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +28,12 @@ class MyApp extends StatelessWidget {
         ),
      BlocProvider( create:(context) => SwitchBloc(),),
      BlocProvider(create: (context) =>CounterBloc()),
+       BlocProvider(create: (context) =>FavBloc(FavRepository())..add(FetchFavItem())),
      
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
+        themeMode: ThemeMode.dark,
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -44,10 +50,11 @@ class MyApp extends StatelessWidget {
           //
           // This works for code too, not just values: Most code changes can be
           // tested with just a hot reload.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.dark(),
           useMaterial3: true,
         ),
-        home:TodoScreen()
+        debugShowCheckedModeBanner: false,
+        home:FavScreen()
       ),
     );
   }

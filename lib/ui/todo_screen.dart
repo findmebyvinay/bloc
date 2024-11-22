@@ -14,10 +14,11 @@ class TodoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Todo App')),
+      appBar: AppBar(title: Text('Todo App'),
+      centerTitle: true,),
       body: Column(
         children: [
-          Padding(
+          Padding(  
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [

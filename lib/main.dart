@@ -1,9 +1,11 @@
 import 'package:bloc_prac/bloc/Counter_cubit.dart';
 import 'package:bloc_prac/bloc/bloc_counter/counter_bloc.dart';
+import 'package:bloc_prac/bloc/comments/cmt_bloc.dart';
 import 'package:bloc_prac/bloc/fav/fav_bloc.dart';
 import 'package:bloc_prac/bloc/fav/fav_event.dart';
 import 'package:bloc_prac/bloc/switch/switch_bloc.dart';
 import 'package:bloc_prac/repository/fav_repository.dart';
+import 'package:bloc_prac/ui/cmt_screen.dart';
 import 'package:bloc_prac/ui/counter_view.dart';
 import 'package:bloc_prac/ui/fav_screen.dart';
 import 'package:bloc_prac/ui/notify.dart';
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
      BlocProvider( create:(context) => SwitchBloc(),),
      BlocProvider(create: (context) =>CounterBloc()),
        BlocProvider(create: (context) =>FavBloc(FavRepository())..add(FetchFavItem())),
+       BlocProvider(create: (context)=> CmtBloc()),
      
       ],
       child: MaterialApp(
@@ -54,7 +57,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home:FavScreen()
+        home:CmtScreen(),
       ),
     );
   }

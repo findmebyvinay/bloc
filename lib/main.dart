@@ -8,6 +8,7 @@ import 'package:bloc_prac/repository/fav_repository.dart';
 import 'package:bloc_prac/ui/cmt_screen.dart';
 import 'package:bloc_prac/ui/counter_view.dart';
 import 'package:bloc_prac/ui/fav_screen.dart';
+import 'package:bloc_prac/ui/login_screen.dart';
 import 'package:bloc_prac/ui/notify.dart';
 import 'package:bloc_prac/ui/todo_screen.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home:CmtScreen(),
+        home:LoginScreen()
       ),
     );
   }

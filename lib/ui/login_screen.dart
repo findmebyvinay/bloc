@@ -40,13 +40,27 @@ class LoginScreen extends StatelessWidget {
                     TextFormfielf(
                       hint: 'Username',
                       label: 'user',
+                      obscureText: false,
+                      prefixIcon: Icon(Icons.mail),
                     ),
                          const SizedBox(height: 20,),
                     TextFormfielf(
                       hint: 'password',
-                      label: '',
+                      label: 'key',
+                      obscureText: true,
+                      prefixIcon: Icon(Icons.key),
+
                     ),
 
+                   const SizedBox(height: 25,),
+                   FloatingActionButton(onPressed: (){},
+                   backgroundColor: Colors.blue,
+                   hoverColor:Colors.amberAccent,
+                   child:Text('     Login      ',
+                   style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                   ),),)
                    
                   ],
                 ),

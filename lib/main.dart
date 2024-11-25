@@ -3,11 +3,13 @@ import 'package:bloc_prac/bloc/bloc_counter/counter_bloc.dart';
 import 'package:bloc_prac/bloc/comments/cmt_bloc.dart';
 import 'package:bloc_prac/bloc/fav/fav_bloc.dart';
 import 'package:bloc_prac/bloc/fav/fav_event.dart';
+import 'package:bloc_prac/bloc/joke/bloc/joke_bloc.dart';
 import 'package:bloc_prac/bloc/switch/switch_bloc.dart';
 import 'package:bloc_prac/repository/fav_repository.dart';
 import 'package:bloc_prac/ui/cmt_screen.dart';
 import 'package:bloc_prac/ui/counter_view.dart';
 import 'package:bloc_prac/ui/fav_screen.dart';
+import 'package:bloc_prac/ui/joke_screen.dart';
 import 'package:bloc_prac/ui/login_screen.dart';
 import 'package:bloc_prac/ui/notify.dart';
 import 'package:bloc_prac/ui/todo_screen.dart';
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
      BlocProvider(create: (context) =>CounterBloc()),
        BlocProvider(create: (context) =>FavBloc(FavRepository())..add(FetchFavItem())),
        BlocProvider(create: (context)=> CmtBloc()),
+       BlocProvider(create: (context)=> JokeBloc()),
      
       ],
       child: MaterialApp(
@@ -58,7 +61,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home:LoginScreen()
+        home:LoginScreen(),
       ),
     );
   }

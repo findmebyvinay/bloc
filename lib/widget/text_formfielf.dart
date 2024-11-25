@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
 class TextFormfielf extends StatelessWidget {
+  TextInputType keyboardtype;
+  FocusNode focusnode;
   Widget prefixIcon;
   bool obscureText;
   String hint;
   String label;
-  TextFormfielf({required this.prefixIcon, required this.obscureText, required this.hint,required this.label, super.key});
+  TextFormfielf({required this.keyboardtype, required this.focusnode, required this.prefixIcon, required this.obscureText, required this.hint,required this.label, super.key});
   
 
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
+        keyboardType: keyboardtype,
+                     focusNode: focusnode,
                       obscureText: obscureText,
                       style: TextStyle(
                         color: Colors.black

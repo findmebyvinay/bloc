@@ -14,8 +14,9 @@ class Button extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         gradient: const LinearGradient(
          colors:[Color.fromRGBO(53, 155, 227, 1),
-          // Color.fromRGBO(251, 109, 169, 1),
-           Color.fromRGBO(236, 239, 239, 1)],
+           Color.fromRGBO(251, 109, 169, 1),
+         //  Color.fromRGBO(236, 239, 239, 1)
+           ],
            begin: Alignment.bottomLeft,
            end: Alignment.topRight
         ),

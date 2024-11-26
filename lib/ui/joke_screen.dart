@@ -33,36 +33,60 @@ class _JokeScreenState extends State<JokeScreen> {
 
           case Status.sucess:
           return Center(
-            child: Container(
-              height: 300,
-              width: 400,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Color.fromRGBO(105, 244, 202, 0.655),
-                  Color.fromRGBO(241, 238, 238, 0.926)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter),
-                borderRadius: BorderRadius.circular(8)
-              ),
-          //     child: 
-        //  return Center(
-            child:
-             ListView.builder(
-                  itemCount: state.jokeList.length,
-                  itemBuilder: (context,index){
-                    final item= state.jokeList[index];
-                   
-                    return ListTile(
-                      leading:Text(item.type.toString()),
-                      title: Text(item.setup.toString()),
-                      subtitle: Text(item.punchline.toString()),
-                    );
-                  
-                              }
-                ),
-                
-          ));
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 200,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Color.fromRGBO(105, 244, 202, 0.655),
+                      Color.fromRGBO(241, 238, 238, 0.926)
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter),
+                    borderRadius: BorderRadius.circular(8)
+                  ),
+                          //     child: 
+                        //  return Center(
+                child:
+                 ListView.builder(
+                      itemCount: state.jokeList.length,
+                      itemBuilder: (context,index){
+                        final item= state.jokeList[index];
+                       
+                        return ListTile(
+                          leading:Text(item.type.toString()),
+                          title: Text(item.setup.toString(),
+                          style:const TextStyle(
+                            fontSize: 25,
+                            fontWeight:FontWeight.bold
+                          )),
+                          subtitle:Text(item.punchline.toString() ,
+                          style:const TextStyle(
+                            fontSize: 20,
+                            fontWeight:FontWeight.bold
+                          )),
+                        );
+                      
+                                  }
+                    ),
+                    
+                          ),
+                          const SizedBox(height: 10,),
+                          ElevatedButton(onPressed: (){
+                            context.read<JokeBloc>().add(FetchJoke());
+                          },
+                           child:Text('Next Joke',
+                           style: TextStyle(
+                            fontSize: 20,
+                            
+                           ),))
+              ],
+            )
+          );
    }} ),
           );
         }

@@ -75,12 +75,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardtype: TextInputType.visiblePassword,
       
                       ),
+                      const SizedBox(height: 10,),
+
+                      passwordfield(),
       
                      const SizedBox(height: 25,),
                     
                      Button(text: 'Log In',
                      onPressed:(){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>JokeScreen()));
+                          Navigator.of(context).push(_createRoute());
+                     // Navigator.push(context, MaterialPageRoute(builder: (context)=>JokeScreen()));
                      },)
                     ],
                   ),
@@ -92,4 +96,31 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+}
+
+Route _createRoute(){
+  return PageRouteBuilder(pageBuilder:(context,animation,secondaryanimation)=>const JokeScreen()
+   ,transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = const Offset(0.5, 0.5);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+ 
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+ 
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Widget passwordfield(){
+ return TextFormField(
+   decoration: InputDecoration(
+    hintText: 'password',
+    prefixIcon: Icon(Icons.key),
+    border: OutlineInputBorder()
+   ),
+ );
 }

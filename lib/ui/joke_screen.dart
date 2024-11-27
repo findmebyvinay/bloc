@@ -13,7 +13,7 @@ class _JokeScreenState extends State<JokeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<JokeBloc>().add(FetchJoke());
+   context.read<JokeBloc>().add(FetchJoke());
   // print(FetchJoke().toString());
     
   }
@@ -58,13 +58,16 @@ class _JokeScreenState extends State<JokeScreen> {
                         final item= state.jokeList[index];
                        
                         return ListTile(
-                          leading:Text(item.type.toString()),
-                          title: Text(item.setup.toString(),
+                          leading:Text(item.type.toString(),
+                          style: const TextStyle(
+                            color: Colors.black
+                          ),),
+                          title: Text('🤓 :'+item.setup.toString(),
                           style:const TextStyle(
                             fontSize: 25,
                             fontWeight:FontWeight.bold
                           )),
-                          subtitle:Text(item.punchline.toString() ,
+                          subtitle:Text('🤣 :'+item.punchline.toString() ,
                           style:const TextStyle(
                             fontSize: 20,
                             fontWeight:FontWeight.bold
